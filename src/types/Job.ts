@@ -2,6 +2,7 @@ export type Job = {
   id: number
   avatar: string
   company: string
+  companyPage: string
   rating: number | undefined
   role: string
   lastUpdated: string

@@ -1,5 +1,5 @@
 import './App.css'
-import { JobsPanel } from '@/components/JobsPanel'
+import { JobsPanel } from '@/components/job/JobsPanel'
 
 export default function App() {
   return (

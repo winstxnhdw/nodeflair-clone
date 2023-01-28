@@ -1,4 +1,11 @@
-import type { Job } from '@/types/job'
+import type { Job, OnClick } from '@/types'
+import { Country } from '@/components/Country'
+import { TechStacks } from '@/components/TechStacks'
+
+type JobCardProps = OnClick & {
+  job: Job
+  selected: boolean
+}
 
 const JobCardTopSectionInformation = ({ avatar, company, rating, category, role }: Job) => (
   <div
@@ -17,7 +24,6 @@ const JobCardTopSectionInformation = ({ avatar, company, rating, category, role 
       }}>
       <img
         src={avatar}
-        loading="lazy"
         style={{
           float: 'left',
           width: '45px',
@@ -59,8 +65,13 @@ const JobCardTopSectionInformation = ({ avatar, company, rating, category, role 
           whiteSpace: 'pre-wrap',
           marginTop: '0px'
         }}>
-        <span> {company}</span>
-        <span>{rating === undefined ? '' : ` ${rating}★`}</span>
+        <span>{company}</span>
+        <span
+          style={{
+            paddingLeft: '10px'
+          }}>
+          {rating === undefined ? '' : `${rating}★`}
+        </span>
       </p>
       <h2
         style={{
@@ -100,27 +111,12 @@ const JobCardTopSectionDetail = ({ lastUpdated, location, currencyPrefix, minSal
         className="recencyInformation"
         style={{
           color: '#1fc76a',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          paddingRight: '1em'
         }}>
         {lastUpdated}
       </span>
-      <div
-        className="country"
-        style={{
-          display: 'inline-block'
-        }}>
-        <img
-          src="/mapMarker.svg"
-          style={{
-            overflow: 'visible',
-            boxSizing: 'content-box',
-            display: 'inline-block',
-            height: '1em',
-            verticalAlign: '-0.125em'
-          }}
-        />{' '}
-        {location}
-      </div>
+      <Country country={location} />
     </div>
     <div>
       <p className="jobListingCardSalary">
@@ -137,7 +133,6 @@ const JobCardTopSection = (job: Job) => (
     style={{
       height: '100%',
       display: 'flex',
-      padding: '20px',
       position: 'relative',
       minHeight: '100%',
       flexDirection: 'column',
@@ -162,30 +157,15 @@ const JobCardBottomSection = ({ techStacks }: Job) => (
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
       backgroundColor: 'white',
+      boxSizing: 'border-box',
       borderBottomLeftRadius: '8px',
       borderBottomRightRadius: '8px'
     }}>
-    {techStacks.map((techStack) => (
-      <span
-        style={{
-          color: '#838383',
-          display: 'inline-block',
-          padding: '5px 8px',
-          overflow: 'hidden',
-          maxWidth: '90%',
-          fontFamily: 'Roboto Mono',
-          fontWeight: 'bold',
-          borderRadius: '5px',
-          textOverflow: 'ellipsis',
-          backgroundColor: '#f1f1f1'
-        }}>
-        {techStack}
-      </span>
-    ))}
+    {TechStacks(techStacks)}
   </div>
 )
 
-export const JobCard = (job: Job) => (
+export const JobCard = ({ job, onClick, selected }: JobCardProps) => (
   <div style={{ padding: '5px' }}>
     <div
       className="jobCard"
@@ -194,12 +174,27 @@ export const JobCard = (job: Job) => (
         height: '100%',
         position: 'relative',
         boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.25)',
+        borderColor: '#1fc76a',
+        borderStyle: `${selected ? 'solid' : 'none'}`,
         borderRadius: '8px',
         fontSize: '14px',
         paddingBottom: '40px',
         backgroundColor: '#f8f8f8'
-      }}>
-      <JobCardTopSection {...job} />
+      }}
+      onClick={onClick}>
+      <div
+        style={{
+          padding: '20px'
+        }}>
+        <JobCardTopSection {...job} />
+        <div
+          style={{
+            content: '',
+            borderBottom: '1px solid #dfdfdf',
+            marginTop: '10px',
+            marginBottom: '-15px'
+          }}></div>
+      </div>
       <JobCardBottomSection {...job} />
     </div>
   </div>
