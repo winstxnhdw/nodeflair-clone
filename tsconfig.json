@@ -30,7 +30,7 @@
     "forceConsistentCasingInFileNames": true,
 
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "NodeNext",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
