@@ -1,4 +1,5 @@
 import type { Job, OnClick } from '@/types'
+import { salaryFormatted } from '@/components/helpers/salaryFormatted'
 import { Country } from '@/components/Country'
 import { TechStacks } from '@/components/TechStacks'
 import gsap from 'gsap'
@@ -116,9 +117,7 @@ const JobCardTopSectionDetail = ({ lastUpdated, location, minSalary, maxSalary }
       <Country country={location} />
     </div>
     <div>
-      <p className="jobListingCardSalary">
-        {minSalary} - {maxSalary} / mth
-      </p>
+      <p className="jobListingCardSalary">{salaryFormatted(minSalary, maxSalary, 'mth')}</p>
     </div>
   </div>
 )

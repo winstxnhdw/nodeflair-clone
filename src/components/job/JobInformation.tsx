@@ -1,5 +1,6 @@
 import styles from '@/components/job/css/job.module.css'
 import type { Job } from '@/types'
+import { salaryFormatted } from '@/components/helpers/salaryFormatted'
 import { Country } from '@/components/Country'
 import { TechStacks } from '@/components/TechStacks'
 import { Seniorities } from '@/components/Seniorities'
@@ -48,7 +49,7 @@ const JobDetails = ({ minSalary, maxSalary, jobType, seniorities, yearsOfExperie
             display: 'inline-block',
             marginBottom: '2px'
           }}>
-          {minSalary} - {maxSalary} / Monthly
+          {salaryFormatted(minSalary, maxSalary, 'Monthly')}
         </div>
       </div>
     </div>
