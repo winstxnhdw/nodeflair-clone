@@ -130,7 +130,6 @@ const JobCardTopSection = (job: Job) => (
       position: 'relative',
       minHeight: '100%',
       flexDirection: 'column',
-      backgroundColor: 'white',
       borderTopLeftRadius: '8px',
       borderTopRightRadius: '8px'
     }}>
@@ -150,7 +149,6 @@ const JobCardBottomSection = ({ techStacks }: Job) => (
       minHeight: '40px',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      backgroundColor: 'white',
       boxSizing: 'border-box',
       borderBottomLeftRadius: '8px',
       borderBottomRightRadius: '8px'
@@ -184,13 +182,13 @@ export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
           height: '100%',
           position: 'relative',
           boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.25)',
+          backgroundColor: 'white',
           outlineColor: '#1fc76a',
           outlineStyle: `${selected ? 'solid' : 'none'}`,
           outlineWidth: '3px',
           borderRadius: '8px',
           fontSize: '14px',
-          paddingBottom: '40px',
-          backgroundColor: '#f8f8f8'
+          paddingBottom: '40px'
         }}
         onClick={onClick}
         onMouseEnter={onMouseEnter}
