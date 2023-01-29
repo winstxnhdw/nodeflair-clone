@@ -12,7 +12,8 @@ export const JobsPanel = () => {
         width: '1110px',
         height: '2384px',
         display: 'flex',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        marginBottom: '100px'
       }}>
       <JobCardsContainer jobs={jobs} selectedJob={selectedJob} setSelectedJob={setSelectedJob} />
       <JobInformation {...(jobs[selectedJob] as Job)} />

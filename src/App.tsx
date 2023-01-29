@@ -6,6 +6,7 @@ export default function App() {
     <div
       className="App"
       style={{
+        overflowY: 'hidden',
         display: 'flex',
         justifyContent: 'center'
       }}>
