@@ -1,7 +1,6 @@
 import type { Job, OnClick } from '@/types'
 import { Country } from '@/components/Country'
 import { TechStacks } from '@/components/TechStacks'
-import { MouseEventHandler } from 'react'
 import gsap from 'gsap'
 
 type JobCardProps = OnClick & {
@@ -167,12 +166,14 @@ export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
   const onMouseEnter = ({ currentTarget }: any) =>
     gsap.to(currentTarget, {
       y: -4,
+      boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.25)',
       duration: 0.3,
       ease: 'Expo.easeOut'
     })
   const onMouseLeave = ({ currentTarget }: any) =>
     gsap.to(currentTarget, {
       y: 0,
+      boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.25)',
       duration: 0.3,
       ease: 'Expo.easeOut'
     })
