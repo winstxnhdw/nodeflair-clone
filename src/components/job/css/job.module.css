@@ -5,7 +5,6 @@
 }
 
 .information {
-    display: block;
     padding: 10px 5px;
     position: sticky;
     flex-grow: 1;
