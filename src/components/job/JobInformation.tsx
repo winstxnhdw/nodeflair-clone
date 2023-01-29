@@ -159,9 +159,7 @@ export const JobInformation = (job: Job) => (
     <div
       style={{
         padding: '0 5px 50px 0',
-        maxHeight: 'calc(100vh - 106px)',
-        overflowY: 'hidden',
-        overflowX: 'scroll'
+        maxHeight: 'calc(100vh - 106px)'
       }}>
       <div
         style={{

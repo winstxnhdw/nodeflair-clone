@@ -10,7 +10,7 @@ type JobCardProps = OnClick & {
 const JobCardTopSectionInformation = ({ avatar, company, rating, category, role }: Job) => (
   <div
     style={{
-      flexWrap: 'wrap',
+      flexWrap: 'nowrap',
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'flex-start'
@@ -82,7 +82,6 @@ const JobCardTopSectionInformation = ({ avatar, company, rating, category, role 
           WebkitBoxOrient: 'vertical',
           WebkitLineClamp: 2,
           fontSize: '16px',
-          fontFamily: 'Open Sans',
           lineHeight: '1.5em',
           margin: '0',
           fontWeight: 'bold'
