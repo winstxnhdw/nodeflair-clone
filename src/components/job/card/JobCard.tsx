@@ -68,7 +68,7 @@ const JobCardTopSectionInformation = ({ avatar, company, rating, category, role 
           style={{
             paddingLeft: '10px'
           }}>
-          {rating === undefined ? '' : `${rating}★`}
+          {rating === 0 ? '' : `${rating} ★`}
         </span>
       </p>
       <h2
@@ -90,7 +90,7 @@ const JobCardTopSectionInformation = ({ avatar, company, rating, category, role 
   </div>
 )
 
-const JobCardTopSectionDetail = ({ lastUpdated, location, currencyPrefix, minSalary, maxSalary }: Job) => (
+const JobCardTopSectionDetail = ({ lastUpdated, location, minSalary, maxSalary }: Job) => (
   <div
     style={{
       paddingLeft: '55px',
@@ -111,15 +111,13 @@ const JobCardTopSectionDetail = ({ lastUpdated, location, currencyPrefix, minSal
           fontWeight: 'bold',
           paddingRight: '1em'
         }}>
-        {lastUpdated}
+        {lastUpdated} ago
       </span>
       <Country country={location} />
     </div>
     <div>
       <p className="jobListingCardSalary">
-        {currencyPrefix}
-        {minSalary} - {currencyPrefix}
-        {maxSalary} / mth
+        {minSalary} - {maxSalary} / mth
       </p>
     </div>
   </div>
@@ -158,7 +156,7 @@ const JobCardBottomSection = ({ techStacks }: Job) => (
       borderBottomLeftRadius: '8px',
       borderBottomRightRadius: '8px'
     }}>
-    {TechStacks(techStacks)}
+    {techStacks !== undefined && TechStacks(techStacks)}
   </div>
 )
 

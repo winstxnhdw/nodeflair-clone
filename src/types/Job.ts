@@ -3,18 +3,17 @@ export type Job = {
   avatar: string
   company: string
   companyPage: string
-  rating: number | undefined
+  rating: number
   role: string
   rolePage: string
   lastUpdated: string
   location: string
-  currencyPrefix: string
   minSalary: string
   maxSalary: string
   category: string
-  techStacks: string[]
-  seniority: string
-  jobType: string
-  yearsOfExperience: string
+  techStacks?: string[]
+  seniorities?: string[]
+  jobType: string | null
+  yearsOfExperience: number
   jobDescription: string
 }

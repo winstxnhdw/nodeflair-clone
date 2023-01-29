@@ -11,7 +11,8 @@ export const TechStacks = (techStacks: string[]) =>
         fontWeight: 'bold',
         borderRadius: '5px',
         textOverflow: 'ellipsis',
-        backgroundColor: '#f1f1f1'
+        backgroundColor: '#f1f1f1',
+        marginRight: '4px'
       }}
       key={techStack}>
       {techStack}

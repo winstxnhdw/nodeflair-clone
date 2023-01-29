@@ -10,9 +10,9 @@ type JobsProps = {
 }
 
 export const JobCardsContainer = ({ jobs, selectedJob, setSelectedJob }: JobsProps) => (
-  <div className={styles.container}>
-    {jobs.map((job) => (
-      <JobCard key={job.id} job={job} onClick={() => setSelectedJob(job.id)} selected={job.id === selectedJob} />
+  <div className={styles['container']}>
+    {jobs.map((job, i) => (
+      <JobCard key={job.id} job={job} onClick={() => setSelectedJob(i)} selected={i === selectedJob} />
     ))}
   </div>
 )

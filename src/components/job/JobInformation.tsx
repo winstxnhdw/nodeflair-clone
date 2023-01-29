@@ -2,6 +2,7 @@ import styles from '@/components/job/css/job.module.css'
 import type { Job } from '@/types'
 import { Country } from '@/components/Country'
 import { TechStacks } from '@/components/TechStacks'
+import { Seniorities } from '@/components/Seniorities'
 import { Interweave } from 'interweave'
 
 const Breakline = () => (
@@ -31,15 +32,7 @@ const JobDescription = ({ jobDescription }: Job) => (
   </div>
 )
 
-const JobDetails = ({
-  currencyPrefix,
-  minSalary,
-  maxSalary,
-  jobType,
-  seniority,
-  yearsOfExperience,
-  techStacks
-}: Job) => (
+const JobDetails = ({ minSalary, maxSalary, jobType, seniorities, yearsOfExperience, techStacks }: Job) => (
   <div
     style={{
       gap: '20px 10px',
@@ -55,45 +48,28 @@ const JobDetails = ({
             display: 'inline-block',
             marginBottom: '2px'
           }}>
-          {currencyPrefix}
-          {minSalary} - {currencyPrefix}
-          {maxSalary} / Monthly
+          {minSalary} - {maxSalary} / Monthly
         </div>
       </div>
     </div>
     <div>
       <b>Job Type</b>
-      <div>{jobType}</div>
+      <div>{`${jobType === undefined ? '-' : jobType}`}</div>
     </div>
-    <div>
-      <b>Seniority</b>
-      <div>
-        <div
-          style={{
-            color: '#838383',
-            margin: '0 0 5px 0',
-            display: 'inline-block',
-            padding: '5px 8px',
-            fontFamily: 'Roboto Mono',
-            fontWeight: 'bold',
-            borderRadius: '5px',
-            backgroundColor: '#f1f1f1'
-          }}>
-          {seniority}
-        </div>
-      </div>
-    </div>
+    <Seniorities seniorities={seniorities} />
     <div>
       <b>Years of Experience</b>
-      <div>{yearsOfExperience}</div>
+      <div>At least {yearsOfExperience} years</div>
     </div>
-    <div
-      style={{
-        gridColumn: '1 / span 2'
-      }}>
-      <b>Tech Stacks</b>
-      <div>{TechStacks(techStacks)}</div>
-    </div>
+    {techStacks !== undefined && (
+      <div
+        style={{
+          gridColumn: '1 / span 2'
+        }}>
+        <b>Tech Stacks</b>
+        <div>{TechStacks(techStacks)}</div>
+      </div>
+    )}
   </div>
 )
 
@@ -150,11 +126,14 @@ const JobHeader = ({ avatar, company, companyPage, role, rolePage, lastUpdated, 
 )
 
 export const JobInformation = (job: Job) => (
-  <div className={styles.information}>
+  <div className={styles['information']}>
     <div
       style={{
         padding: '0 5px 50px 0',
-        maxHeight: 'calc(100vh - 106px)'
+        maxHeight: '100%',
+        overflowX: 'hidden',
+        overflowY: 'scroll',
+        height: '100vh'
       }}>
       <div
         style={{

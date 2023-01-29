@@ -5,11 +5,14 @@
 }
 
 .information {
+    display: block;
     padding: 10px 5px;
     position: sticky;
     flex-grow: 1;
     flex-shrink: 15;
     min-width: 0;
+    top: 0;
+    height: 100vh;
 }
 
 .container {
