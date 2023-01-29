@@ -5,6 +5,7 @@ export type Job = {
   companyPage: string
   rating: number | undefined
   role: string
+  rolePage: string
   lastUpdated: string
   location: string
   currencyPrefix: string
