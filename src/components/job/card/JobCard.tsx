@@ -1,3 +1,4 @@
+import styles from '@/components/job/css/job.module.css'
 import type { Job, OnClick } from '@/types'
 import { salaryFormatted } from '@/components/helpers/salaryFormatted'
 import { Country } from '@/components/Country'
@@ -193,6 +194,7 @@ export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}>
+        <a href={job.companyPage} className={styles['redirect']}></a>
         <div
           style={{
             padding: '20px'

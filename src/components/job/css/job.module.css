@@ -1,9 +1,3 @@
-@media screen and (max-width: 1200px) {
-    .information {
-        display: none;
-    }
-}
-
 .information {
     padding: 10px 5px;
     position: sticky;
@@ -15,8 +9,31 @@
 }
 
 .container {
+    display: block;
     max-width: 427px;
     flex-grow: 1;
     flex-shrink: 1;
     padding-top: 5px;
+}
+
+.redirect {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+@media screen and (max-width: 1200px) {
+    .information {
+        display: none;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .redirect {
+        display: block;
+    }
 }
