@@ -12,7 +12,6 @@ type JobCardProps = OnClick & {
 const JobCardTopSectionInformation = ({ avatar, company, rating, category, role }: Job) => (
   <div
     style={{
-      flexWrap: 'nowrap',
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'flex-start'
@@ -56,9 +55,7 @@ const JobCardTopSectionInformation = ({ avatar, company, rating, category, role 
     <div
       className="informationContainer"
       style={{
-        flexBasis: 'auto',
-        marginTop: 0,
-        flexShrink: 1
+        marginTop: 0
       }}>
       <p
         className="companyNameAndRating"

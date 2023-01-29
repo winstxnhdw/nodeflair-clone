@@ -1,3 +1,4 @@
+import styles from '@/components/job/css/job.module.css'
 import type { Job } from '@/types'
 import { Country } from '@/components/Country'
 import { TechStacks } from '@/components/TechStacks'
@@ -149,13 +150,7 @@ const JobHeader = ({ avatar, company, companyPage, role, rolePage, lastUpdated, 
 )
 
 export const JobInformation = (job: Job) => (
-  <div
-    style={{
-      padding: '10px 5px',
-      position: 'sticky',
-      flexGrow: 1,
-      minWidth: '0'
-    }}>
+  <div className={styles.information}>
     <div
       style={{
         padding: '0 5px 50px 0',

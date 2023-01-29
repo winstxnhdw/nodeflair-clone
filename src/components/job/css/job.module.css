@@ -1,0 +1,20 @@
+@media screen and (max-width: 1200px) {
+    .information {
+        display: none;
+    }
+}
+
+.information {
+    padding: 10px 5px;
+    position: sticky;
+    flex-grow: 1;
+    flex-shrink: 15;
+    min-width: 0;
+}
+
+.container {
+    max-width: 427px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding-top: 5px;
+}

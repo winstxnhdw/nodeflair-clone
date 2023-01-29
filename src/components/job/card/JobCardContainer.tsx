@@ -1,6 +1,7 @@
+import styles from '@/components/job/css/job.module.css'
 import type { Job } from '@/types'
+import type { Dispatch, SetStateAction } from 'react'
 import { JobCard } from '@/components/job/card/JobCard'
-import { Dispatch, SetStateAction } from 'react'
 
 type JobsProps = {
   jobs: Job[]
@@ -9,12 +10,7 @@ type JobsProps = {
 }
 
 export const JobCardsContainer = ({ jobs, selectedJob, setSelectedJob }: JobsProps) => (
-  <div
-    style={{
-      width: '427px',
-      flexShrink: 0,
-      paddingTop: '5px'
-    }}>
+  <div className={styles.container}>
     {jobs.map((job) => (
       <JobCard key={job.id} job={job} onClick={() => setSelectedJob(job.id)} selected={job.id === selectedJob} />
     ))}
