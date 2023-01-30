@@ -7,5 +7,5 @@ export const getRequestWithProxy = async (url: string) => {
     })}`
   )
 
-  return await request.json()
+  return request.json()
 }
