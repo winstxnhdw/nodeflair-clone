@@ -1,6 +1,7 @@
 import type { Job } from '@/types'
 import { JobCardsContainer } from '@/components/job/card/JobCardContainer'
 import { JobInformation } from '@/components/job/JobInformation'
+import { Loading } from '@/components/Loading'
 import { useState } from 'react'
 import { handleFetch } from '@/utils'
 import { nodeflair } from '@/libs/nodeflair/index.js'
@@ -47,7 +48,9 @@ export const JobsPanel = () => {
   const [selectedJob, setSelectedJob] = useState<number>(0)
   const jobs = getJobs()
 
-  return jobs === undefined ? null : (
+  return jobs === undefined ? (
+    <Loading />
+  ) : (
     <div
       style={{
         width: '1140px',
