@@ -1,5 +1,5 @@
-import styles from '@/components/job/css/job.module.css'
 import type { Job } from '@/types'
+import styles from '@/components/job/css/job.module.css'
 import { salaryFormatted } from '@/components/helpers/salaryFormatted'
 import { Country } from '@/components/Country'
 import { TechStacks } from '@/components/TechStacks'
