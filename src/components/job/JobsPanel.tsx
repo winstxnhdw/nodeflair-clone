@@ -53,7 +53,7 @@ export const JobsPanel = () => {
   ) : (
     <div
       style={{
-        width: '1140px',
+        maxWidth: '1140px',
         display: 'flex',
         alignItems: 'flex-start',
         marginBottom: '100px'

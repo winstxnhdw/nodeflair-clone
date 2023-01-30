@@ -5,12 +5,12 @@ body {
     background-color: #F2F2F2;
 }
 
-#root {
-    font-family: 'Open Sans', sans-serif;
-}
-
 b {
     font-weight: 700;
+}
+
+#root {
+    font-family: 'Open Sans', sans-serif;
 }
 
 @media screen and (max-width: 1200px) {
