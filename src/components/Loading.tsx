@@ -63,12 +63,12 @@ export const Loading = () => {
       className="loading"
       style={{
         paddingTop: '45vh',
+        paddingBottom: '10px',
         fontFamily: 'Roboto Mono',
         fontWeight: '700',
         fontSize: '30px',
         color: '#1FC76A',
-        margin: 'auto',
-        height: '90vh'
+        margin: 'auto'
       }}>
       {displayText}
     </div>
