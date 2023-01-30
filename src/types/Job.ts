@@ -7,13 +7,13 @@ export type Job = {
   role: string
   rolePage: string
   lastUpdated: string
-  location: string
+  country: string
   minSalary: string
   maxSalary: string
   category: string
-  techStacks?: string[]
-  seniorities?: string[]
-  jobType: string | null
+  techStacks: string[]
+  seniorities: string[]
+  employmentType: string | null
   yearsOfExperience: number
-  jobDescription: string
+  description: string
 }

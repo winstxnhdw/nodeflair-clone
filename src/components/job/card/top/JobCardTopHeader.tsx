@@ -58,7 +58,8 @@ export const JobCardTopHeader = ({ avatar, company, rating, category, role }: Jo
         <span>{company}</span>
         <span
           style={{
-            paddingLeft: '10px'
+            paddingLeft: '10px',
+            whiteSpace: 'nowrap'
           }}>
           {rating === 0 ? '' : `${rating} ★`}
         </span>

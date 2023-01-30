@@ -2,7 +2,7 @@ import type { Job } from '@/types'
 import { salaryFormatted } from '@/components/helpers/salaryFormatted'
 import { Country } from '@/components/Country'
 
-export const JobCardTopDetail = ({ lastUpdated, location, minSalary, maxSalary }: Job) => (
+export const JobCardTopDetail = ({ lastUpdated, country, minSalary, maxSalary }: Job) => (
   <div
     style={{
       paddingLeft: '55px',
@@ -25,10 +25,12 @@ export const JobCardTopDetail = ({ lastUpdated, location, minSalary, maxSalary }
         }}>
         {lastUpdated} ago
       </span>
-      <Country country={location} />
+      <Country country={country} />
     </div>
-    <div>
-      <p className="jobListingCardSalary">{salaryFormatted(minSalary, maxSalary, 'mth')}</p>
-    </div>
+    {minSalary !== '' && (
+      <div>
+        <p className="jobListingCardSalary">{salaryFormatted(minSalary, maxSalary, 'mth')}</p>
+      </div>
+    )}
   </div>
 )

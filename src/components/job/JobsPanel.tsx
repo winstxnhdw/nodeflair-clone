@@ -8,7 +8,7 @@ import { nodeflair } from '@/libs/nodeflair/index.js'
 
 const getJobs = () =>
   handleFetch<Job[]>((setData, ignore) => {
-    nodeflair.getJobs(1, 'relevant').then((json) => {
+    nodeflair.getJobs('', 1, 'relevant').then((json) => {
       const jobIndexWithSpecialisations = json.job_listings.map((jobListing) => {
         return {
           id: jobListing.id,
@@ -29,15 +29,15 @@ const getJobs = () =>
             role: response.job.title,
             rolePage: response.job.url,
             lastUpdated: response.job.time_ago,
-            location: response.job.country,
+            country: response.job.country,
             minSalary: response.job.salary_min,
             maxSalary: response.job.salary_max,
             category: jobIndexWithSpecialisation.specialisation,
             techStacks: response.job.tech_stacks,
             seniorities: response.job.seniorities,
-            jobType: response.job.employment_types,
+            employmentType: response.job.employment_type,
             yearsOfExperience: response.job.yoe_min,
-            jobDescription: response.job.description
+            description: response.job.description
           }
         })
       ).then((jobs) => (!ignore ? setData(jobs) : null))
@@ -56,7 +56,7 @@ export const JobsPanel = () => {
         maxWidth: '1140px',
         display: 'flex',
         alignItems: 'flex-start',
-        marginBottom: '100px'
+        marginBottom: '50px'
       }}>
       <JobCardsContainer jobs={jobs} selectedJob={selectedJob} setSelectedJob={setSelectedJob} />
       <JobInformation {...(jobs[selectedJob] as Job)} />

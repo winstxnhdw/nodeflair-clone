@@ -1,9 +1,9 @@
 type SenioritiesProps = {
-  seniorities: string[] | undefined
+  seniorities: string[]
 }
 
 export const Seniorities = ({ seniorities }: SenioritiesProps) => {
-  if (seniorities === undefined) return null
+  if (seniorities.length === 0) return null
 
   return (
     <div>

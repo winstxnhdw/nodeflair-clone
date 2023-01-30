@@ -16,7 +16,7 @@ const Breakline = () => (
     }}></div>
 )
 
-const JobDescription = ({ jobDescription }: Job) => (
+const JobDescription = ({ description }: Job) => (
   <div>
     <div
       style={{
@@ -28,12 +28,12 @@ const JobDescription = ({ jobDescription }: Job) => (
       Job Description
     </div>
     <div style={{ marginTop: '20px' }}>
-      <Interweave content={jobDescription} />
+      <Interweave content={description} />
     </div>
   </div>
 )
 
-const JobDetails = ({ minSalary, maxSalary, jobType, seniorities, yearsOfExperience, techStacks }: Job) => (
+const JobDetails = ({ minSalary, maxSalary, employmentType, seniorities, yearsOfExperience, techStacks }: Job) => (
   <div
     style={{
       gap: '20px 10px',
@@ -41,28 +41,30 @@ const JobDetails = ({ minSalary, maxSalary, jobType, seniorities, yearsOfExperie
       whiteSpace: 'pre-wrap',
       gridTemplateColumns: '1fr 1fr'
     }}>
-    <div>
-      <b>Salary</b>
+    {minSalary !== '' && (
       <div>
-        <div
-          style={{
-            display: 'inline-block',
-            marginBottom: '2px'
-          }}>
-          {salaryFormatted(minSalary, maxSalary, 'Monthly')}
+        <b>Salary</b>
+        <div>
+          <div
+            style={{
+              display: 'inline-block',
+              marginBottom: '2px'
+            }}>
+            {salaryFormatted(minSalary, maxSalary, 'Monthly')}
+          </div>
         </div>
       </div>
-    </div>
+    )}
     <div>
       <b>Job Type</b>
-      <div>{`${jobType === undefined ? '-' : jobType}`}</div>
+      <div>{`${employmentType === null ? '-' : employmentType}`}</div>
     </div>
     <Seniorities seniorities={seniorities} />
     <div>
       <b>Years of Experience</b>
       <div>At least {yearsOfExperience} years</div>
     </div>
-    {techStacks !== undefined && (
+    {techStacks.length !== 0 && (
       <div
         style={{
           gridColumn: '1 / span 2'
@@ -74,7 +76,7 @@ const JobDetails = ({ minSalary, maxSalary, jobType, seniorities, yearsOfExperie
   </div>
 )
 
-const JobHeader = ({ avatar, company, companyPage, role, rolePage, lastUpdated, location }: Job) => (
+const JobHeader = ({ avatar, company, companyPage, role, rolePage, lastUpdated, country }: Job) => (
   <div
     style={{
       display: 'flex',
@@ -120,7 +122,7 @@ const JobHeader = ({ avatar, company, companyPage, role, rolePage, lastUpdated, 
           whiteSpace: 'pre-wrap'
         }}>
         <span style={{ paddingRight: '15px' }}>{lastUpdated}</span>
-        <Country country={location} />
+        <Country country={country} />
       </div>
     </div>
   </div>

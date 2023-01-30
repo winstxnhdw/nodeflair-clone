@@ -6,12 +6,12 @@ type JobQuery = {
     seniorities: string[]
     time_ago: string
     country: string
-    currency: string
+    currency: string | null
     description: string
     tech_stacks: string[]
     yoe_min: number
     yoe_max: number
-    employment_types: null
+    employment_type: string | null
     salary_min: string
     salary_max: string
     remuneration_frequency: string
@@ -70,8 +70,8 @@ class Nodeflair {
     this.jobEndpoint = `${this.domain}/jobs`
   }
 
-  public getJobs(pages: number, sort_by: 'relevant' | 'recent'): Promise<JobListings> {
-    return getRequestWithProxy(`${this.jobEndpoint}?query=&page=${pages}&sort_by=${sort_by}`)
+  public getJobs(query: string, pages: number, sort_by: 'relevant' | 'recent'): Promise<JobListings> {
+    return getRequestWithProxy(`${this.jobEndpoint}/?query=${query}&page=${pages}&sort_by=${sort_by}`)
   }
 
   public getJob(id: number): Promise<JobQuery> {
