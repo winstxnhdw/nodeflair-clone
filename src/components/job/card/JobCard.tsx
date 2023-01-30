@@ -29,7 +29,7 @@ export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
   return (
     <div style={{ padding: '5px' }}>
       <div
-        className="jobCard"
+        className={styles['card']}
         style={{
           cursor: 'pointer',
           height: '100%',
@@ -38,7 +38,6 @@ export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
           backgroundColor: 'white',
           outlineColor: '#1fc76a',
           outlineStyle: `${selected ? 'solid' : 'none'}`,
-          outlineWidth: '3px',
           borderRadius: '8px',
           fontSize: '14px',
           paddingBottom: '40px'
