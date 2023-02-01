@@ -8,39 +8,37 @@ import { nodeflair } from '@/libs/nodeflair/index.js'
 
 const getJobs = () =>
   handleFetch<Job[]>((setData, ignore) => {
-    nodeflair.getJobs('', 1, 'relevant').then((json) => {
-      const jobIndexWithSpecialisations = json.job_listings.map((jobListing) => {
-        return {
-          id: jobListing.id,
-          specialisation: jobListing.position
-        }
-      })
+    if (ignore) return
 
-      Promise.all(
-        jobIndexWithSpecialisations.map(async (jobIndexWithSpecialisation) => {
-          const response = await nodeflair.getJob(jobIndexWithSpecialisation.id)
+    nodeflair.getJobListings('', 1, 'relevant').then((json) => {
+      const jobIndices = json.job_listings.map((jobListing) => jobListing.id)
+      const jobSpecialisations = json.job_listings.map((jobListing) => jobListing.position)
 
-          return {
-            id: jobIndexWithSpecialisation.id,
-            avatar: response.company.logo_url,
-            company: response.company.name,
-            companyPage: response.company.url,
-            rating: response.company.rating,
-            role: response.job.title,
-            rolePage: response.job.url,
-            lastUpdated: response.job.time_ago,
-            country: response.job.country,
-            minSalary: response.job.salary_min,
-            maxSalary: response.job.salary_max,
-            category: jobIndexWithSpecialisation.specialisation,
-            techStacks: response.job.tech_stacks,
-            seniorities: response.job.seniorities,
-            employmentType: response.job.employment_type,
-            yearsOfExperience: response.job.yoe_min,
-            description: response.job.description
-          }
-        })
-      ).then((jobs) => (!ignore ? setData(jobs) : null))
+      nodeflair.getJobs(...jobIndices).then((response) =>
+        setData(
+          response.map((query, i) => {
+            return {
+              id: jobIndices[i] as number,
+              category: jobSpecialisations[i] as string,
+              avatar: query.company.logo_url,
+              company: query.company.name,
+              companyPage: query.company.url,
+              rating: query.company.rating,
+              role: query.job.title,
+              rolePage: query.job.url,
+              lastUpdated: query.job.time_ago,
+              country: query.job.country,
+              minSalary: query.job.salary_min,
+              maxSalary: query.job.salary_max,
+              techStacks: query.job.tech_stacks,
+              seniorities: query.job.seniorities,
+              employmentType: query.job.employment_type,
+              yearsOfExperience: query.job.yoe_min,
+              description: query.job.description
+            }
+          })
+        )
+      )
     })
   })
 

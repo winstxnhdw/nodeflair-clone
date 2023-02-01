@@ -1,11 +1,13 @@
 import { config } from '@/config'
 
-export const getRequestWithProxy = async (url: string) => {
-  const request = await fetch(
-    `${config.VITE_PROXY_ENDPOINT}?${new URLSearchParams({
-      url: encodeURIComponent(url)
-    })}`
-  )
+export const getRequestWithProxy = async <T>(...endpoints: string[]): Promise<T[]> => {
+  const request = await fetch(config.VITE_PROXY_ENDPOINT, {
+    method: 'POST',
+    body: JSON.stringify({
+      endpoints: endpoints
+    })
+  })
 
-  return request.json()
+  const response: string[] = await request.json()
+  return response.map((res) => JSON.parse(res))
 }
