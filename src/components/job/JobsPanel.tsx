@@ -2,17 +2,17 @@ import type { Job } from '@/types'
 import { JobCardsContainer } from '@/components/job/card/JobCardContainer'
 import { JobInformation } from '@/components/job/JobInformation'
 import { Loading } from '@/components/Loading'
-import { useState } from 'react'
 import { handleFetch } from '@/utils'
-import { nodeflair } from '@/libs/nodeflair/index.js'
+import { nodeflair } from '@/libs/nodeflair'
+import { useState } from 'react'
 
 const getJobs = () =>
   handleFetch<Job[]>((setData, ignore) => {
     if (ignore) return
 
     nodeflair.getJobListings('', 1, 'relevant').then((json) => {
-      const jobIndices = json.job_listings.map((jobListing) => jobListing.id)
-      const jobSpecialisations = json.job_listings.map((jobListing) => jobListing.position)
+      const jobIndices = json.job_listings.map(({ id }) => id)
+      const jobSpecialisations = json.job_listings.map(({ position }) => position)
 
       nodeflair.getJobs(...jobIndices).then((response) =>
         setData(
