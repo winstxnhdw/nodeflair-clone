@@ -1,6 +1,6 @@
-import type { Job } from '@/types'
-import { salaryFormatted } from '@/components/helpers/salaryFormatted'
 import { Country } from '@/components/Country'
+import { salaryFormatted } from '@/components/helpers/salaryFormatted'
+import type { Job } from '@/types'
 
 export const JobCardTopDetail = ({ lastUpdated, country, minSalary, maxSalary }: Job) => (
   <div

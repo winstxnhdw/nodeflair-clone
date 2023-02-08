@@ -1,6 +1,6 @@
-import type { Job } from '@/types'
-import { JobCardTopHeader } from '@/components/job/card/top/JobCardTopHeader'
 import { JobCardTopDetail } from '@/components/job/card/top/JobCardTopDetail'
+import { JobCardTopHeader } from '@/components/job/card/top/JobCardTopHeader'
+import type { Job } from '@/types'
 
 export const JobCardTopSection = (job: Job) => (
   <div

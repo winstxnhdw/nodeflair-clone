@@ -1,50 +1,43 @@
-import type { Job } from '@/types'
-import { JobCardsContainer } from '@/components/job/card/JobCardContainer'
-import { JobInformation } from '@/components/job/JobInformation'
 import { Loading } from '@/components/Loading'
-import { handleFetch } from '@/utils'
+import { JobInformation } from '@/components/job/JobInformation'
+import { JobCardsContainer } from '@/components/job/card/JobCardContainer'
 import { nodeflair } from '@/libs/nodeflair'
+import type { Job } from '@/types'
+import { handleFetch } from '@/utils'
 import { useState } from 'react'
 
-const getJobs = () =>
-  handleFetch<Job[]>((setData, ignore) => {
-    if (ignore) return
+const requestJobs = async () => {
+  const jobListings = await nodeflair.getJobListings('', 1, 'relevant')
+  const jobIndices = jobListings.job_listings.map(({ id }) => id)
+  const jobSpecialisations = jobListings.job_listings.map(({ position }) => position)
+  const jobs = await nodeflair.getJobs(...jobIndices)
 
-    nodeflair.getJobListings('', 1, 'relevant').then((json) => {
-      const jobIndices = json.job_listings.map(({ id }) => id)
-      const jobSpecialisations = json.job_listings.map(({ position }) => position)
-
-      nodeflair.getJobs(...jobIndices).then((response) =>
-        setData(
-          response.map((query, i) => {
-            return {
-              id: jobIndices[i] as number,
-              category: jobSpecialisations[i] as string,
-              avatar: query.company.logo_url,
-              company: query.company.name,
-              companyPage: query.company.url,
-              rating: query.company.rating,
-              role: query.job.title,
-              rolePage: query.job.url,
-              lastUpdated: query.job.time_ago,
-              country: query.job.country,
-              minSalary: query.job.salary_min,
-              maxSalary: query.job.salary_max,
-              techStacks: query.job.tech_stacks,
-              seniorities: query.job.seniorities,
-              employmentType: query.job.employment_type,
-              yearsOfExperience: query.job.yoe_min,
-              description: query.job.description
-            }
-          })
-        )
-      )
-    })
+  return jobs.map((query, i) => {
+    return {
+      id: jobIndices[i] as number,
+      category: jobSpecialisations[i] as string,
+      avatar: query.company.logo_url,
+      company: query.company.name,
+      companyPage: query.company.url,
+      rating: query.company.rating,
+      role: query.job.title,
+      rolePage: query.job.url,
+      lastUpdated: query.job.time_ago,
+      country: query.job.country,
+      minSalary: query.job.salary_min,
+      maxSalary: query.job.salary_max,
+      techStacks: query.job.tech_stacks,
+      seniorities: query.job.seniorities,
+      employmentType: query.job.employment_type,
+      yearsOfExperience: query.job.yoe_min,
+      description: query.job.description
+    } as Job
   })
+}
 
 export const JobsPanel = () => {
   const [selectedJob, setSelectedJob] = useState<number>(0)
-  const jobs = getJobs()
+  const jobs = handleFetch(requestJobs)
 
   return jobs === undefined ? (
     <Loading />

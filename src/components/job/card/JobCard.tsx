@@ -1,8 +1,8 @@
-import type { Job, OnClick } from '@/types'
-import styles from '@/components/job/css/job.module.css'
-import { JobCardTopSection } from '@/components/job/card/top/JobCardTop'
-import { JobCardBottomSection } from '@/components/job/card/bottom/JobCardBottom'
 import { Divider } from '@/components/job/card/Divider'
+import { JobCardBottomSection } from '@/components/job/card/bottom/JobCardBottom'
+import { JobCardTopSection } from '@/components/job/card/top/JobCardTop'
+import styles from '@/components/job/css/job.module.css'
+import type { Job, OnClick } from '@/types'
 import gsap from 'gsap'
 
 type JobCardProps = OnClick & {

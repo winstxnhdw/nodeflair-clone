@@ -1,5 +1,5 @@
-import type { Job } from '@/types'
 import { TechStacks } from '@/components/TechStacks'
+import type { Job } from '@/types'
 
 export const JobCardBottomSection = ({ techStacks }: Job) => (
   <div
