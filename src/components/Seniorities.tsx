@@ -1,5 +1,7 @@
+import type { Seniority } from '@/types'
+
 type SenioritiesProps = {
-  seniorities: string[]
+  seniorities: Seniority[]
 }
 
 export const Seniorities = ({ seniorities }: SenioritiesProps) => {
@@ -21,8 +23,8 @@ export const Seniorities = ({ seniorities }: SenioritiesProps) => {
               borderRadius: '5px',
               backgroundColor: '#f1f1f1'
             }}
-            key={seniority}>
-            {seniority}
+            key={seniority.name}>
+            {seniority.name}
           </div>
         ))}
       </div>

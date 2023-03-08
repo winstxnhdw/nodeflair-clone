@@ -1,5 +1,5 @@
 import type { MouseEventHandler } from 'react'
 
-export type OnClick = {
+export interface OnClick {
   onClick?: MouseEventHandler
 }

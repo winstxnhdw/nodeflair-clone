@@ -1,4 +1,5 @@
-export type Job = {
+import { Seniority } from '@/types'
+export interface Job {
   id: number
   avatar: string
   company: string
@@ -12,7 +13,7 @@ export type Job = {
   maxSalary: string
   category: string
   techStacks: string[]
-  seniorities: string[]
+  seniorities: Seniority[]
   employmentType: string | null
   yearsOfExperience: number
   description: string
