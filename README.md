@@ -16,6 +16,12 @@ yarn
 
 ## Development
 
+Populate the `.env` file.
+
+```bash
+echo VITE_PROXY_ENDPOINT=YOUR_PROXY_ENDPOINT >> .env
+```
+
 Run the following to start the development server.
 
 ```bash
