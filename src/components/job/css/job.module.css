@@ -3,7 +3,7 @@
     position: sticky;
     flex-grow: 1;
     flex-shrink: 15;
-    min-width: 0;
+    min-width: 713px;
     top: 0;
     height: 100vh;
 }
