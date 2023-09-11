@@ -1,16 +1,29 @@
 import { config } from '@/config'
 
-export const getRequestWithProxy = async <T>(...endpoints: string[]): Promise<T[]> => {
+const getRequest = async (...endpoints: string[]): Promise<string[]> => {
+  const endpointsWithHeaders = endpoints.map((endpoint) => {
+    return {
+      endpoint: endpoint,
+      headers: {
+        'User-Agent': 'worker-proxy',
+      },
+    }
+  })
+
   const request = await fetch(config.VITE_PROXY_ENDPOINT, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      endpoints: endpoints
-    })
+      endpoints: endpointsWithHeaders,
+    }),
   })
 
-  const response: string[] = await request.json()
-  return response.map((res) => JSON.parse(res))
+  return request.json()
+}
+
+export const getRequestWithProxy = async <T>(...endpoints: string[]): Promise<T[]> => {
+  const response = await getRequest(...endpoints)
+  return response.map((res) => JSON.parse(res) as unknown) as T[]
 }
