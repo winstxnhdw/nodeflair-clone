@@ -4,20 +4,13 @@ const getRequest = async (...endpoints: string[]): Promise<string[]> => {
   const endpointsWithHeaders = endpoints.map((endpoint) => {
     return {
       endpoint: endpoint,
-      headers: {
-        'User-Agent': 'worker-proxy',
-      },
+      headers: { 'User-Agent': 'worker-proxy' },
     }
   })
 
   const request = await fetch(config.VITE_PROXY_ENDPOINT, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      endpoints: endpointsWithHeaders,
-    }),
+    body: JSON.stringify({ endpoints: endpointsWithHeaders }),
   })
 
   return request.json() as Promise<string[]>
