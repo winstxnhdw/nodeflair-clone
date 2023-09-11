@@ -20,7 +20,7 @@ const getRequest = async (...endpoints: string[]): Promise<string[]> => {
     }),
   })
 
-  return request.json()
+  return request.json() as Promise<string[]>
 }
 
 export const getRequestWithProxy = async <T>(...endpoints: string[]): Promise<T[]> => {
