@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "lib": ["DOM", "DOM.Iterable"],
+    "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
 
@@ -29,7 +29,7 @@
     "allowUnreachableCode": true /* Disable error reporting for unreachable code. */,
     "forceConsistentCasingInFileNames": true,
 
-    "module": "ESNext",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "baseUrl": "./",
     "paths": {
@@ -44,5 +44,5 @@
     "skipDefaultLibCheck": true /* Skip type checking .d.ts files that are included with TypeScript. */,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.js"]
 }
