@@ -11,7 +11,7 @@ A clone of [nodeflair.com/jobs](https://nodeflair.com/jobs) in React, tested on 
 Run the following install all dependencies.
 
 ```bash
-yarn
+bun install
 ```
 
 ## Development
@@ -25,5 +25,5 @@ echo VITE_PROXY_ENDPOINT=$YOUR_PROXY_ENDPOINT >> .env
 Run the following to start the development server.
 
 ```bash
-yarn dev
+bun dev
 ```
