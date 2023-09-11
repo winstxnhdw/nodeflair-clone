@@ -5,14 +5,14 @@ export const JobCardTopHeader = ({ avatar, company, rating, category, role }: Jo
     style={{
       display: 'flex',
       alignItems: 'flex-start',
-      justifyContent: 'flex-start'
+      justifyContent: 'flex-start',
     }}>
     <div
       className="avatarContainer"
       style={{
         width: 'max-content',
         height: 'max-content',
-        margin: '0 10px 0 0'
+        margin: '0 10px 0 0',
       }}>
       <img
         src={avatar}
@@ -20,7 +20,7 @@ export const JobCardTopHeader = ({ avatar, company, rating, category, role }: Jo
           float: 'left',
           width: '45px',
           height: '45px',
-          borderRadius: '4px'
+          borderRadius: '4px',
         }}
       />
     </div>
@@ -29,7 +29,7 @@ export const JobCardTopHeader = ({ avatar, company, rating, category, role }: Jo
       style={{
         order: 3,
         marginLeft: 'auto',
-        paddingLeft: '10px'
+        paddingLeft: '10px',
       }}>
       <div
         style={{
@@ -38,7 +38,7 @@ export const JobCardTopHeader = ({ avatar, company, rating, category, role }: Jo
           padding: '5px 8px',
           fontWeight: '600',
           borderRadius: '5px',
-          backgroundColor: '#ddf7e9'
+          backgroundColor: '#ddf7e9',
         }}>
         {category}
       </div>
@@ -46,22 +46,22 @@ export const JobCardTopHeader = ({ avatar, company, rating, category, role }: Jo
     <div
       className="informationContainer"
       style={{
-        marginTop: 0
+        marginTop: 0,
       }}>
       <p
         className="companyNameAndRating"
         style={{
           marginBottom: '2px',
           whiteSpace: 'pre-wrap',
-          marginTop: '0px'
+          marginTop: '0px',
         }}>
         <span>{company}</span>
         <span
           style={{
             paddingLeft: '10px',
-            whiteSpace: 'nowrap'
+            whiteSpace: 'nowrap',
           }}>
-          {rating === 0 ? '' : `${rating} ★`}
+          {!rating || rating === 0 ? '' : `${rating} ★`}
         </span>
       </p>
       <h2
@@ -75,7 +75,7 @@ export const JobCardTopHeader = ({ avatar, company, rating, category, role }: Jo
           fontSize: '16px',
           lineHeight: '1.5em',
           margin: '0',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
         }}>
         {role}
       </h2>

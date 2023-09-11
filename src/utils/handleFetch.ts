@@ -5,7 +5,7 @@ export const handleFetch = <T>(getData: () => Promise<T>) => {
 
   useEffect(() => {
     let ignore = false
-    ;(() => (!ignore ? getData().then(setData) : null))()
+    ;(() => (!ignore ? void getData().then(setData).catch(console.error) : null))() // eslint-disable-line
 
     return () => {
       ignore = true

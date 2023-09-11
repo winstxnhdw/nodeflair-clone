@@ -1,9 +1,9 @@
-import type { Job } from '@/types'
-import styles from '@/components/job/css/job.module.css'
-import { salaryFormatted } from '@/components/helpers/salaryFormatted'
 import { Country } from '@/components/Country'
-import { TechStacks } from '@/components/TechStacks'
 import { Seniorities } from '@/components/Seniorities'
+import { TechStacks } from '@/components/TechStacks'
+import { salaryFormatted } from '@/components/helpers/salaryFormatted'
+import styles from '@/components/job/css/job.module.css'
+import type { Job } from '@/types'
 import { Interweave } from 'interweave'
 
 const Breakline = () => (
@@ -12,7 +12,7 @@ const Breakline = () => (
       width: 'calc(100% + 40px)',
       height: '0.5px',
       margin: '20px -20px',
-      backgroundColor: 'hsl(134, 0%, 95%)'
+      backgroundColor: 'hsl(134, 0%, 95%)',
     }}></div>
 )
 
@@ -23,12 +23,12 @@ const JobDescription = ({ description }: Job) => (
         fontSize: '16px',
         fontWeight: 'bold',
         lineHeight: '1.5em',
-        marginBottom: '5px'
+        marginBottom: '5px',
       }}>
       Job Description
     </div>
     <div style={{ marginTop: '20px' }}>
-      <Interweave content={description} />
+      <Interweave content={description ?? ''} />
     </div>
   </div>
 )
@@ -39,16 +39,16 @@ const JobDetails = ({ minSalary, maxSalary, employmentType, seniorities, yearsOf
       gap: '20px 10px',
       display: 'grid',
       whiteSpace: 'pre-wrap',
-      gridTemplateColumns: '1fr 1fr'
+      gridTemplateColumns: '1fr 1fr',
     }}>
-    {minSalary !== '' && (
+    {minSalary && maxSalary && (
       <div>
         <b>Salary</b>
         <div>
           <div
             style={{
               display: 'inline-block',
-              marginBottom: '2px'
+              marginBottom: '2px',
             }}>
             {salaryFormatted(minSalary, maxSalary, 'Monthly')}
           </div>
@@ -57,17 +57,17 @@ const JobDetails = ({ minSalary, maxSalary, employmentType, seniorities, yearsOf
     )}
     <div>
       <b>Job Type</b>
-      <div>{`${employmentType === null ? '-' : employmentType}`}</div>
+      <div>{`${!employmentType ? '-' : employmentType}`}</div>
     </div>
-    <Seniorities seniorities={seniorities} />
+    {seniorities && <Seniorities seniorities={seniorities} />}
     <div>
       <b>Years of Experience</b>
       <div>At least {yearsOfExperience} years</div>
     </div>
-    {techStacks.length !== 0 && (
+    {techStacks !== undefined && techStacks.length !== 0 && (
       <div
         style={{
-          gridColumn: '1 / span 2'
+          gridColumn: '1 / span 2',
         }}>
         <b>Tech Stacks</b>
         <div>{TechStacks(techStacks)}</div>
@@ -80,7 +80,7 @@ const JobHeader = ({ avatar, company, companyPage, role, rolePage, lastUpdated, 
   <div
     style={{
       display: 'flex',
-      alignItems: 'flex-start'
+      alignItems: 'flex-start',
     }}>
     <img
       src={avatar}
@@ -90,14 +90,14 @@ const JobHeader = ({ avatar, company, companyPage, role, rolePage, lastUpdated, 
         background: 'white',
         flexShrink: 0,
         marginRight: '20px',
-        borderRadius: '5px'
+        borderRadius: '5px',
       }}
     />
     <div style={{ flexShrink: 1 }}>
       <div
         style={{
           whiteSpace: 'pre-wrap',
-          marginBottom: '5px'
+          marginBottom: '5px',
         }}>
         {company}
         <a href={companyPage} style={{ paddingLeft: '12px', color: '#1fc76a' }}>
@@ -112,17 +112,17 @@ const JobHeader = ({ avatar, company, companyPage, role, rolePage, lastUpdated, 
           lineHeight: '1.5em',
           marginBottom: '5px',
           color: 'black',
-          textDecoration: 'none'
+          textDecoration: 'none',
         }}>
         {role}
       </a>
       <div
         style={{
           color: '#838383',
-          whiteSpace: 'pre-wrap'
+          whiteSpace: 'pre-wrap',
         }}>
         <span style={{ paddingRight: '15px' }}>{lastUpdated}</span>
-        <Country country={country} />
+        {country && <Country country={country} />}
       </div>
     </div>
   </div>
@@ -136,7 +136,7 @@ export const JobInformation = (job: Job) => (
         maxHeight: '100%',
         overflowX: 'hidden',
         overflowY: 'scroll',
-        height: '100vh'
+        height: '100vh',
       }}>
       <div
         style={{
@@ -147,7 +147,7 @@ export const JobInformation = (job: Job) => (
           boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.25)',
           borderRadius: '8px',
           overflowWrap: 'break-word',
-          backgroundColor: 'white'
+          backgroundColor: 'white',
         }}>
         <JobHeader {...job} />
         <Breakline />

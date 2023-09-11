@@ -1,15 +1,18 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "eqeqeq": "error",
+    "@typescript-eslint/non-nullable-type-assertion-style": "off"
+  },
   "extends": [
-    "eslint:recommended",
+    "plugin:@typescript-eslint/strict",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "prettier"
   ],
-  "env": {
-    "node": true
+  "parserOptions": {
+    "project": ["./tsconfig.json", "./tsconfig.node.json"]
   }
 }

@@ -8,14 +8,20 @@ import { useState } from 'react'
 
 const requestJobs = async () => {
   const jobListings = await nodeflair.getJobListings('', 1, 'relevant')
+
+  if (jobListings === undefined) {
+    console.error('Failed to fetch job listings')
+    return
+  }
+
   const jobIndices = jobListings.job_listings.map(({ id }) => id)
   const jobSpecialisations = jobListings.job_listings.map(({ position }) => position)
   const jobs = await nodeflair.getJobs(...jobIndices)
 
   return jobs.map((query, i) => {
     return {
-      id: jobIndices[i] as number,
-      category: jobSpecialisations[i] as string,
+      id: jobIndices[i],
+      category: jobSpecialisations[i],
       avatar: query.company.logo_url,
       company: query.company.name,
       companyPage: query.company.url,
@@ -30,7 +36,7 @@ const requestJobs = async () => {
       seniorities: query.job.seniorities,
       employmentType: query.job.employment_type,
       yearsOfExperience: query.job.yoe_min,
-      description: query.job.description
+      description: query.job.description,
     } as Job
   })
 }
@@ -47,10 +53,10 @@ export const JobsPanel = () => {
         maxWidth: '1140px',
         display: 'flex',
         alignItems: 'flex-start',
-        marginBottom: '50px'
+        marginBottom: '50px',
       }}>
       <JobCardsContainer jobs={jobs} selectedJob={selectedJob} setSelectedJob={setSelectedJob} />
-      <JobInformation {...(jobs[selectedJob] as Job)} />
+      <JobInformation {...jobs[selectedJob]} />
     </div>
   )
 }

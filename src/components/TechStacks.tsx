@@ -12,7 +12,7 @@ export const TechStacks = (techStacks: string[]) =>
         borderRadius: '5px',
         textOverflow: 'ellipsis',
         backgroundColor: '#f1f1f1',
-        marginRight: '4px'
+        marginRight: '4px',
       }}
       key={techStack}>
       {techStack}

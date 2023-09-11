@@ -1,6 +1,6 @@
 import { MapMarker } from '@/components/MapMarker'
 
-type CountryProps = {
+interface CountryProps {
   country: string
 }
 

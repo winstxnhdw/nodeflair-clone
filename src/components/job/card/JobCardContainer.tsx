@@ -3,7 +3,7 @@ import styles from '@/components/job/css/job.module.css'
 import type { Job } from '@/types'
 import type { Dispatch, SetStateAction } from 'react'
 
-type JobsProps = {
+interface JobsProps {
   jobs: Job[]
   selectedJob: number
   setSelectedJob: Dispatch<SetStateAction<number>>

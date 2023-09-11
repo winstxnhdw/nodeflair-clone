@@ -16,15 +16,15 @@ export const Loading = () => {
       {
         autoAlpha: 0,
         filter: 'blur(10px)',
-        y: 40
+        y: 40,
       },
       {
         autoAlpha: 1,
         filter: 'blur(0px)',
         y: 0,
         ease: 'Expo.easeOut',
-        duration: 1
-      }
+        duration: 1,
+      },
     )
 
     const interval = setInterval(() => {
@@ -35,7 +35,7 @@ export const Loading = () => {
             if (index < iteration) return originalText[index]
             return letters[Math.floor(Math.random() * letters.length)]
           })
-          .join('')
+          .join(''),
       )
 
       if (iteration >= originalText.length) {
@@ -48,7 +48,8 @@ export const Loading = () => {
           iteration = 0
           timer = 0
         }
-        timer += interval
+
+        timer += Number(interval)
         return
       }
 
@@ -68,7 +69,7 @@ export const Loading = () => {
         fontWeight: '700',
         fontSize: '30px',
         color: '#1FC76A',
-        margin: 'auto'
+        margin: 'auto',
       }}>
       {displayText}
     </div>

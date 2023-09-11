@@ -10,11 +10,15 @@ class Nodeflair {
     this.jobEndpoint = `${this.domain}/jobs`
   }
 
-  public async getJobListings(query: string, pages: number, sort_by: 'relevant' | 'recent') {
+  public async getJobListings(
+    query: string,
+    pages: number,
+    sort_by: 'relevant' | 'recent',
+  ): Promise<JobListings | undefined> {
     const request = await getRequestWithProxy<JobListings>(
-      `${this.jobEndpoint}/?query=${query}&page=${pages}&sort_by=${sort_by}`
+      `${this.jobEndpoint}/?query=${query}&page=${pages}&sort_by=${sort_by}`,
     )
-    return request[0] as JobListings
+    return request[0]
   }
 
   public async getJobs(...id: number[]) {

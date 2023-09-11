@@ -1,6 +1,6 @@
 import type { Seniority } from '@/types'
 
-type SenioritiesProps = {
+interface SenioritiesProps {
   seniorities: Seniority[]
 }
 

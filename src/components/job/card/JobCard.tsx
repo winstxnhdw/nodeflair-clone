@@ -4,28 +4,32 @@ import { JobCardTopSection } from '@/components/job/card/top/JobCardTop'
 import styles from '@/components/job/css/job.module.css'
 import type { Job, OnClick } from '@/types'
 import gsap from 'gsap'
+import type { SyntheticEvent } from 'react'
 
 type JobCardProps = OnClick & {
   job: Job
   selected: boolean
 }
 
-export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
-  const onMouseEnter = ({ currentTarget }: any) =>
-    gsap.to(currentTarget, {
-      y: -4,
-      boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.25)',
-      duration: 0.3,
-      ease: 'Expo.easeOut'
-    })
-  const onMouseLeave = ({ currentTarget }: any) =>
-    gsap.to(currentTarget, {
-      y: 0,
-      boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.25)',
-      duration: 0.3,
-      ease: 'Expo.easeOut'
-    })
+const onMouseEnter = ({ currentTarget }: SyntheticEvent<HTMLDivElement, MouseEvent>) => {
+  gsap.to(currentTarget, {
+    y: -4,
+    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.25)',
+    duration: 0.3,
+    ease: 'Expo.easeOut',
+  })
+}
 
+const onMouseLeave = ({ currentTarget }: SyntheticEvent<HTMLDivElement, MouseEvent>) => {
+  gsap.to(currentTarget, {
+    y: 0,
+    boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.25)',
+    duration: 0.3,
+    ease: 'Expo.easeOut',
+  })
+}
+
+export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
   return (
     <div style={{ padding: '5px' }}>
       <div
@@ -40,7 +44,7 @@ export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
           outlineStyle: `${selected ? 'solid' : 'none'}`,
           borderRadius: '8px',
           fontSize: '14px',
-          paddingBottom: '40px'
+          paddingBottom: '40px',
         }}
         onClick={onClick}
         onMouseEnter={onMouseEnter}
@@ -48,7 +52,7 @@ export const JobCard = ({ job, onClick, selected }: JobCardProps) => {
         <a href={job.companyPage} className={styles['redirect']}></a>
         <div
           style={{
-            padding: '20px'
+            padding: '20px',
           }}>
           <JobCardTopSection {...job} />
           <Divider />

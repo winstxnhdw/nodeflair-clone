@@ -14,7 +14,7 @@ export const JobCardBottomSection = ({ techStacks }: Job) => (
       textOverflow: 'ellipsis',
       boxSizing: 'border-box',
       borderBottomLeftRadius: '8px',
-      borderBottomRightRadius: '8px'
+      borderBottomRightRadius: '8px',
     }}>
     {techStacks !== undefined && TechStacks(techStacks)}
   </div>
