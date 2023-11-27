@@ -21,7 +21,7 @@ class Nodeflair {
     return request[0]
   }
 
-  public async getJobs(...id: number[]) {
+  public async getJobs(...id: number[]): Promise<JobQuery[]> {
     const endpoints = id.map((id) => `${this.jobEndpoint}/${id}`)
     return getRequestWithProxy<JobQuery>(...endpoints)
   }
