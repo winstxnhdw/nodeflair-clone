@@ -1,6 +1,10 @@
 import { config } from '@/config'
 
-const getRequest = async (...endpoints: string[]): Promise<string[]> => {
+type ProxyResponse = {
+  responses: string[]
+}
+
+const getRequest = async (...endpoints: string[]): Promise<ProxyResponse> => {
   const endpointsWithHeaders = endpoints.map((endpoint) => {
     return {
       endpoint: endpoint,
@@ -10,13 +14,14 @@ const getRequest = async (...endpoints: string[]): Promise<string[]> => {
 
   const request = await fetch(config.VITE_PROXY_ENDPOINT, {
     method: 'POST',
-    body: JSON.stringify({ endpoints: endpointsWithHeaders }),
+    body: JSON.stringify({ batch: endpointsWithHeaders }),
+    headers: { 'Content-Type': 'application/json' },
   })
 
-  return request.json() as Promise<string[]>
+  return request.json() as Promise<ProxyResponse>
 }
 
 export const getRequestWithProxy = async <T>(...endpoints: string[]): Promise<T[]> => {
-  const response = await getRequest(...endpoints)
-  return response.map((res) => JSON.parse(res) as unknown) as T[]
+  const { responses } = await getRequest(...endpoints)
+  return responses.map((res) => JSON.parse(res) as unknown) as T[]
 }
