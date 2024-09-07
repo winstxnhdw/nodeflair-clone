@@ -1,4 +1,4 @@
-# nodeflair-assignment
+# nodeflair-clone
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c0c2e1a2-63b6-4106-aeac-3a4f320f7c8b/deploy-status)](https://app.netlify.com/sites/nodeflair-jobs/deploys)
 
