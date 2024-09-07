@@ -4,7 +4,7 @@
 
 > Finally, a clone that uses the actual data of the original site!
 
-A clone of [nodeflair.com/jobs](https://nodeflair.com/jobs) in React, tested on Firefox Developer Edition. It uses [worker-proxy](https://github.com/winstxnhdw/worker-proxy), formerly [lambda-proxy](https://github.com/winstxnhdw/lambda-proxy), to retrieve the latest Nodeflair jobs.
+A responsive clone of [nodeflair.com/jobs](https://nodeflair.com/jobs) in React, tested on Firefox Developer Edition. It uses [worker-proxy](https://github.com/winstxnhdw/worker-proxy), formerly [lambda-proxy](https://github.com/winstxnhdw/lambda-proxy), to retrieve the latest Nodeflair jobs.
 
 ## Setup
 
