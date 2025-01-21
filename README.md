@@ -8,7 +8,7 @@ A responsive clone of [nodeflair.com/jobs](https://nodeflair.com/jobs) in React,
 
 ## Setup
 
-Run the following install all dependencies.
+Run the following to install all dependencies.
 
 ```bash
 bun install
