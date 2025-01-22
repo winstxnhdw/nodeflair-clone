@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "bunx --bun vite",
-    "build": "bun x vite build",
+    "build": "bunx --bun vite build",
     "preview": "vite preview",
     "lint": "eslint ."
   },
